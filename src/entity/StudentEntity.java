@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import entity.embeded.StudentName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,5 @@ public class StudentEntity {
     @Column(name = "stu_nic", nullable = false, length = 12)
     private String nic;
 
-
+    private StudentName name;
 }
