@@ -22,4 +22,29 @@ public class StudentRepository {
         }
     }
 
+    public void updateStudent(StudentEntity studentEntity){
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.update(studentEntity);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+    }
+
+    public void deleteStudent(StudentEntity studentEntity){
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.delete(studentEntity);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+    }
+
+    public StudentEntity getStudent(Integer id){
+       StudentEntity entity = session.get(StudentEntity.class, id);
+       return entity;
+    }
+
 }
