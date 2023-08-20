@@ -1,10 +1,15 @@
 package entity;
 
+import java.util.List;
+
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import entity.embeded.StudentName;
@@ -32,4 +37,10 @@ public class StudentEntity {
     private String nic;
 
     private StudentName name;
+
+    @ElementCollection
+    @CollectionTable(
+        name = "student_mobile", 
+        joinColumns = @JoinColumn(name = "student_id"))
+    List<String> mobiles;
 }
